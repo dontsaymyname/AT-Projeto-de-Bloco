@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_light">#228FF5</color>
+    <color name="blue_medium">#1447DE</color>
+    <color name="blue_dark">#1917FA</color>
+    <color name="cian_light">#17FAEE</color>
+    <color name="cian_dark">#14B2DE</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_game">
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.home.ProfileFragment"
+        android:label="@string/perfil"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_game"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.dashboard.GameFragment"
+        android:label="@string/game"
+        tools:layout="@layout/fragment_game" />
+
+    <fragment
+        android:id="@+id/navigation_chests"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.notifications.ChestsFragment"
+        android:label="@string/chests"
+        tools:layout="@layout/fragment_chests" />
+
+    <fragment
+        android:id="@+id/navigation_catalog"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.notifications.ChestsFragment"
+        android:label="@string/catalog"
+        tools:layout="@layout/fragment_catalog" />
+</navigation>

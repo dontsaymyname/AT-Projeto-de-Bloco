@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Assessment Projeto De Bloco</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="perfil">Perfil</string>
+    <string name="game">Game</string>
+    <string name="catalog">Catálogo</string>
+    <string name="chests">Baús</string>
+</resources>
