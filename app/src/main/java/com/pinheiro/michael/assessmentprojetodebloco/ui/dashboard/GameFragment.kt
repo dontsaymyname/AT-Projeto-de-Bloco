@@ -20,8 +20,8 @@ class GameFragment : Fragment() {
     ): View {
 
         _binding = FragmentGameBinding.inflate(inflater, container, false)
-        
-        binding.gamesComposeView.setContent { 
+
+        binding.gamesComposeView.setContent {
             Text(text = "Text do Game Fragment")
         }
 
