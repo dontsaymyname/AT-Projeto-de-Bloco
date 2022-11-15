@@ -25,7 +25,6 @@ class GameFragment : Fragment() {
             Text(text = "Text do Game Fragment")
         }
 
-
         return binding.root
     }
 
