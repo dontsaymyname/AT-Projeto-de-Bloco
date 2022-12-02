@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.home.ProfileFragment"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.profile.ProfileFragment"
         android:label="@string/perfil"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_game"
-        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.dashboard.GameFragment"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.game.GameFragment"
         android:label="@string/game"
         tools:layout="@layout/fragment_game" />
 
     <fragment
         android:id="@+id/navigation_chests"
-        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.notifications.ChestsFragment"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.chests.ChestsFragment"
         android:label="@string/chests"
         tools:layout="@layout/fragment_chests" />
 
     <fragment
         android:id="@+id/navigation_catalog"
-        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.notifications.ChestsFragment"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.catalog.CatalogFragment"
         android:label="@string/catalog"
         tools:layout="@layout/fragment_catalog" />
 </navigation>

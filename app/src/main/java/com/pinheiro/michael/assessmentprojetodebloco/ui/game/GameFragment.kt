@@ -1,4 +1,4 @@
-package com.pinheiro.michael.assessmentprojetodebloco.ui.dashboard
+package com.pinheiro.michael.assessmentprojetodebloco.ui.game
 
 import android.os.Bundle
 import android.view.LayoutInflater
