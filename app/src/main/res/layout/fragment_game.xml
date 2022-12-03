@@ -6,11 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".ui.game.GameFragment">
 
-    <androidx.compose.ui.platform.ComposeView
-        android:id="@+id/games_compose_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

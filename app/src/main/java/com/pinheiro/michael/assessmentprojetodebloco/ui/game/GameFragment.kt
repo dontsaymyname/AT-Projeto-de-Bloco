@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.pinheiro.michael.assessmentprojetodebloco.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
-// teste
+
     private var _binding: FragmentGameBinding? = null
     private val binding get() = _binding!!
 
@@ -21,9 +21,6 @@ class GameFragment : Fragment() {
 
         _binding = FragmentGameBinding.inflate(inflater, container, false)
 
-        binding.gamesComposeView.setContent {
-            Text(text = "Text do Game Fragment")
-        }
 
         return binding.root
     }
