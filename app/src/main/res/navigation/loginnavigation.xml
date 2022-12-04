@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loginnavigation"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.login.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_signOnFragment"
+            app:destination="@id/signOnFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signOnFragment"
+        android:name="com.pinheiro.michael.assessmentprojetodebloco.ui.login.SignOnFragment"
+        android:label="SignOnFragment" />
+</navigation>
