@@ -9,6 +9,7 @@ import coil.load
 import com.pinheiro.michael.assessmentprojetodebloco.R
 import com.pinheiro.michael.assessmentprojetodebloco.databinding.ItemCardBinding
 import com.pinheiro.michael.assessmentprojetodebloco.service.CardModel
+import com.pinheiro.michael.assessmentprojetodebloco.service.Rarity
 
 interface CardListener {
     fun clickVisualizar(card: CardModel)
@@ -42,10 +43,18 @@ class CatalogAdapter(val cardListener: CardListener) :
                 tvAttack.text = item.atk.toString()
                 tvDef.text = item.def.toString()
                 tvMagic.text = item.magic.toString()
-                imgSprite.load(item.sprite){
+                imgSprite.load(item.sprite) {
                     placeholder(R.drawable.ic_person)
                 }
-               // containerCard.alpha = 0.1f
+
+                containerCard.setBackgroundResource(
+                    when (item.rarity) {
+                        Rarity.NORMAL -> R.drawable.card_normal
+                        Rarity.RARE -> R.drawable.card_rare
+                        Rarity.LEGENDARY -> R.drawable.card_legendary
+                    }
+                )
+                // containerCard.alpha = 0.1f
 
                 containerCard.setOnClickListener {
                     listener.clickVisualizar(item)
