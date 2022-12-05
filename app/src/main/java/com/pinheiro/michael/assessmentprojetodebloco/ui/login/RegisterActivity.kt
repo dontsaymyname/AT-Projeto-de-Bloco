@@ -48,7 +48,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun signOn(email: String, password: String) {
         viewModel.signOn(email,password)
-        viewModel.signOn(email,password)
             .addOnSuccessListener {
                 toastMsg("cadastrado com sucesso")
                 startMainActivity()

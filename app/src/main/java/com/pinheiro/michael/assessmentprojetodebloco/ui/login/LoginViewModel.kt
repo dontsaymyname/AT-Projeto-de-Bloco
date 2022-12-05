@@ -20,7 +20,9 @@ class LoginViewModel: ViewModel() {
         return repository.cadastrarUsuarioComSenha(
             email,
             password
-        )
+        ).addOnSuccessListener {
+            repository.createUser(it.user!!.uid, it.user!!.email!!)
+        }
     }
 
 
