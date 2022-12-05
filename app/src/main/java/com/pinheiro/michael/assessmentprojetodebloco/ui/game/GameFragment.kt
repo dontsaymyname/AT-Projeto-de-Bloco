@@ -1,5 +1,6 @@
 package com.pinheiro.michael.assessmentprojetodebloco.ui.game
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,10 @@ class GameFragment : Fragment() {
     ): View {
 
         _binding = FragmentGameBinding.inflate(inflater, container, false)
+
+        binding.btnPlay.setOnClickListener {
+            startActivity(Intent(activity, InGameActivity::class.java))
+        }
 
 
         return binding.root
