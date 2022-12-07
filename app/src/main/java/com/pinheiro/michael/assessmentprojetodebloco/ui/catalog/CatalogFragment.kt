@@ -1,34 +1,15 @@
 package com.pinheiro.michael.assessmentprojetodebloco.ui.catalog
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material.Card
-import androidx.compose.material.Text
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.unit.dp
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import coil.compose.AsyncImage
-import coil.request.CachePolicy
-import coil.request.ImageRequest
-import com.pinheiro.michael.assessmentprojetodebloco.R
 import com.pinheiro.michael.assessmentprojetodebloco.databinding.FragmentCatalogBinding
-import com.pinheiro.michael.assessmentprojetodebloco.databinding.FragmentProfileBinding
 import com.pinheiro.michael.assessmentprojetodebloco.service.CardModel
-import com.pinheiro.michael.assessmentprojetodebloco.service.allCards
+import com.pinheiro.michael.assessmentprojetodebloco.service.AllCards
 
 class CatalogFragment : Fragment() {
 
@@ -49,7 +30,7 @@ class CatalogFragment : Fragment() {
         })
 
         setupViews()
-        atualizaRecyclerView(allCards.cardsList)
+        atualizaRecyclerView(AllCards.cardsList)
 
         return binding.root
     }
