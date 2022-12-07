@@ -2,13 +2,16 @@ package com.pinheiro.michael.assessmentprojetodebloco.ui.game
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.google.firebase.firestore.ktx.toObject
 import com.pinheiro.michael.assessmentprojetodebloco.R
 import com.pinheiro.michael.assessmentprojetodebloco.databinding.ActivityInGameBinding
 import com.pinheiro.michael.assessmentprojetodebloco.databinding.ItemCardBinding
-import com.pinheiro.michael.assessmentprojetodebloco.service.CardModel
-import com.pinheiro.michael.assessmentprojetodebloco.service.Rarity
+import com.pinheiro.michael.assessmentprojetodebloco.service.*
+import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class InGameActivity : AppCompatActivity() {
@@ -16,6 +19,7 @@ class InGameActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInGameBinding
     private lateinit var playerCards: List<CardModel>
     private lateinit var enemyCards: List<CardModel>
+    private val viewModel by viewModels<GameViewModel>()
     private var playerScore = 0
     private var enemyScore = 0
     private var cardIndex = 0
@@ -31,71 +35,9 @@ class InGameActivity : AppCompatActivity() {
 
         isPlayerRound = Random.nextBoolean()
 
-        playerCards = listOf(
-            CardModel(
-                id = 0,
-                name = "Arkilon",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 5000,
-                def = 4500,
-                magic = 1500,
-                rarity = Rarity.LEGENDARY
-            ),
-            CardModel(
-                id = 1,
-                name = "Grungkin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 3000,
-                def = 2000,
-                magic = 1500,
-                rarity = Rarity.RARE
-            ),
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 5000,
-                def = 4500,
-                magic = 1500,
-                rarity = Rarity.LEGENDARY
-            ),
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 4000,
-                def = 5500,
-                magic = 2500,
-                rarity = Rarity.NORMAL
-            ),
-            CardModel(
-                id = 1,
-                name = "Grungkin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 2000,
-                def = 1000,
-                magic = 3500,
-                rarity = Rarity.NORMAL
-            ),
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 6000,
-                def = 3500,
-                magic = 2500,
-                rarity = Rarity.RARE
-            ),
-            CardModel(
-                id = 1,
-                name = "Grungkin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 3000,
-                def = 2000,
-                magic = 1500,
-                rarity = Rarity.LEGENDARY
-            )
-        )
+        var cards = emptyList<Int>()
+
+        playerCards = viewModel.retrieveDeck().findCards()
 
         enemyCards = listOf(
             CardModel(

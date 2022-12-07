@@ -5,8 +5,10 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.pinheiro.michael.assessmentprojetodebloco.service.UserModel
 
@@ -18,6 +20,7 @@ class LoginRepository private constructor() {
         lateinit var auth: FirebaseAuth
         lateinit var firestore: FirebaseFirestore
         lateinit var usersCollection: CollectionReference
+        var userModel = UserModel()
 
 
         private var INSTANCE: LoginRepository? = null
@@ -29,6 +32,7 @@ class LoginRepository private constructor() {
             firestore = Firebase.firestore
             usersCollection = firestore.collection("users")
 
+            setUserDocument()
 
         }
 
@@ -38,8 +42,18 @@ class LoginRepository private constructor() {
 
         }
 
+        private fun setUserDocument() {
+            val id = auth.currentUser!!.uid
+            val user = usersCollection.document(id)
+            user.get().addOnCompleteListener {
+                if(it.isSuccessful){
+                    userModel = it.result.toObject<UserModel>()!!
+                }
+            }
+        }
 
     }
+
 
     fun getCurrentUser() = auth.currentUser
 
@@ -64,15 +78,23 @@ class LoginRepository private constructor() {
 
     fun createUser(userId: String, email: String) {
         val firstDeck = mutableSetOf<Int>()
-        while(firstDeck.size < 7){
+        while (firstDeck.size < 12) {
             firstDeck.add((1..50).random())
         }
-        usersCollection.document(userId).set(UserModel(id = userId, email = email, cardsIds = firstDeck.toList()))
+        usersCollection.document(userId).set(
+            UserModel(
+                id = userId,
+                email = email,
+                cardsIds = firstDeck.toList(),
+                deck = firstDeck.toList().dropLast(5)
+            )
+        )
     }
 
-    fun addInitialDeck(userId: String) {
-        usersCollection.document(userId).collection("cards").add(1)
-    }
+    fun getUsersCollection() = usersCollection
+
+    fun getUserModel() = userModel
+
 
 
     fun logout() {
