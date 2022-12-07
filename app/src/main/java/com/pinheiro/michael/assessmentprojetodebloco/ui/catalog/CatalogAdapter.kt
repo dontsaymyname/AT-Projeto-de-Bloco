@@ -1,6 +1,7 @@
 package com.pinheiro.michael.assessmentprojetodebloco.ui.catalog
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,7 +13,7 @@ import com.pinheiro.michael.assessmentprojetodebloco.service.CardModel
 import com.pinheiro.michael.assessmentprojetodebloco.service.Rarity
 
 interface CardListener {
-    fun clickVisualizar(card: CardModel)
+    fun clickVisualizar(card: CardModel, itemView: View)
 }
 
 class CatalogAdapter(val cardListener: CardListener) :
@@ -56,8 +57,8 @@ class CatalogAdapter(val cardListener: CardListener) :
                 )
                 // containerCard.alpha = 0.1f
 
-                containerCard.setOnClickListener {
-                    listener.clickVisualizar(item)
+                containerMask.setOnClickListener {
+                    listener.clickVisualizar(item, it)
                 }
             }
         }

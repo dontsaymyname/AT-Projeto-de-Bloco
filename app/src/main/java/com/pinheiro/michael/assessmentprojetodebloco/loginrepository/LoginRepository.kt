@@ -32,7 +32,10 @@ class LoginRepository private constructor() {
             firestore = Firebase.firestore
             usersCollection = firestore.collection("users")
 
-            setUserDocument()
+            if(auth.currentUser != null){
+                setUserDocument()
+            }
+
 
         }
 
@@ -57,6 +60,10 @@ class LoginRepository private constructor() {
 
     fun getCurrentUser() = auth.currentUser
 
+    fun updateUserModel(newUserModel: UserModel){
+        userModel = newUserModel
+    }
+
     fun isLoggedIn(): Boolean {
         if (getCurrentUser() != null) {
             return true
@@ -79,7 +86,7 @@ class LoginRepository private constructor() {
     fun createUser(userId: String, email: String) {
         val firstDeck = mutableSetOf<Int>()
         while (firstDeck.size < 12) {
-            firstDeck.add((1..50).random())
+            firstDeck.add((1..15).random())
         }
         usersCollection.document(userId).set(
             UserModel(

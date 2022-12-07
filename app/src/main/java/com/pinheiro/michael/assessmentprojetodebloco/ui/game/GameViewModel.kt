@@ -20,36 +20,7 @@ class GameViewModel : ViewModel() {
 
     private val repository = LoginRepository.get()
 
-    private val _deck = MutableLiveData<List<Int>>()
-    val deck: LiveData<List<Int>> = _deck
-    var playerDeck = emptyList<Int>()
-
-
-
-   fun retrieveDeck() = repository.getUserModel().deck
-
-    fun getDeck(){
-        val user = repository.getUsersCollection().document("UWrSroYYdLYCaTH8Lq7FZXQ5G412")
-        user.get().addOnSuccessListener {document ->
-            if (document != null) {
-                println("not null")
-                playerDeck = document.toObject<UserModel>()!!.deck
-            } else {
-                println("null")
-            }
-        }
-            .addOnFailureListener { exception ->
-                println("failure")
-            }
-
-//        repository.getUserDocument().get().addOnSuccessListener { document ->
-//            val user = document.toObject<UserModel>()
-//            playerDeck = user!!.deck
-//        }.addOnFailureListener {
-//            println("fail")
-//            println("fail2")
-//        }
-    }
+    fun retrieveDeck() = repository.getUserModel().deck
 
 
 }
