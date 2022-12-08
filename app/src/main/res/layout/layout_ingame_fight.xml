@@ -23,39 +23,69 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/iv_fight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/fight3"
+        app:layout_constraintBottom_toTopOf="@+id/card_player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_enemy" />
+
     <TextView
         android:id="@+id/tv_escolha_atributo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/card_player"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/card_player"
-        app:layout_constraintTop_toTopOf="@+id/card_player"
-        tools:text="Você escolheu:\n Atk" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_numbers_horizontal"
+        tools:text="Você escolheu: Atk" />
 
     <TextView
         android:id="@+id/tv_player_attribute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="6000"
         android:textColor="@color/white"
         android:textSize="32sp"
+        android:layout_marginBottom="10dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tv_vs_text"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_vs_text" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline_numbers_horizontal"
+        app:layout_constraintStart_toEndOf="@+id/guideline_numbers_vertical"
+        tools:text="6000" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_numbers_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_numbers_vertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.89" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_numbers_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.53" />
 
     <TextView
         android:id="@+id/tv_vs_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="VS"
+        android:visibility="gone"
         android:textColor="@color/white"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -69,12 +99,11 @@
         android:id="@+id/tv_enemy_attribute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="4500"
         android:textColor="@color/white"
         android:textSize="32sp"
+        android:layout_marginBottom="10dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_vs_text"
-        app:layout_constraintTop_toTopOf="@+id/tv_vs_text" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline_numbers_horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_numbers_vertical2"
+        tools:text="4500" />
 </androidx.constraintlayout.widget.ConstraintLayout>
