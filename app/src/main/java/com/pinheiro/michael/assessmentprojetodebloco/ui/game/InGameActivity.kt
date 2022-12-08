@@ -117,7 +117,7 @@ class InGameActivity : AppCompatActivity() {
             with(binding.layoutFight){
                 tvPlayerAttribute.isVisible = false
                 tvEnemyAttribute.isVisible = false
-                tvVsText.text = when(currentMatchResult){
+                tvEscolhaAtributo.text = when(currentMatchResult){
                     MatchResults.WIN -> "Round Vencido"
                     MatchResults.DEFEAT -> "Round Perdido"
                     MatchResults.DRAW -> "Round Empatado"
@@ -186,7 +186,7 @@ class InGameActivity : AppCompatActivity() {
             CardAttributes.DEF -> "DEF"
             CardAttributes.MAGIC -> "MAGIC"
         }
-        binding.layoutFight.tvEscolhaAtributo.text = "Oponente escolheu\n$atttributeText"
+        binding.layoutFight.tvEscolhaAtributo.text = "Oponente escolheu $atttributeText"
         setFight(enemyAttribute, playerCard, enemyCard)
     }
 
@@ -214,11 +214,11 @@ class InGameActivity : AppCompatActivity() {
             root.isVisible = true
             cardPlayer.populateCard(playerCard)
             btnChoiceAttack.setOnClickListener { setFight(CardAttributes.ATK, playerCard, enemyCard)
-                binding.layoutFight.tvEscolhaAtributo.text = "Você escolheu\nATK"}
+                binding.layoutFight.tvEscolhaAtributo.text = "Você escolheu ATK"}
             btnChoiceDef.setOnClickListener { setFight(CardAttributes.DEF, playerCard, enemyCard)
-                binding.layoutFight.tvEscolhaAtributo.text = "Você escolheu\nDEF"}
+                binding.layoutFight.tvEscolhaAtributo.text = "Você escolheu DEF"}
             btnChoiceMag.setOnClickListener { setFight(CardAttributes.MAGIC, playerCard, enemyCard)
-                binding.layoutFight.tvEscolhaAtributo.text = "Você escolheu\nMAGIC"}
+                binding.layoutFight.tvEscolhaAtributo.text = "Você escolheu MAGIC"}
         }
     }
 

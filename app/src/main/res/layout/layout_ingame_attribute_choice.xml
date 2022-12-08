@@ -33,21 +33,23 @@
 
     <Button
         android:id="@+id/btn_choice_attack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:layout_marginRight="4dp"
-        android:text="ATK"
+        android:text=""
+        android:background="@drawable/button_atk"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/card_player" />
 
     <Button
         android:id="@+id/btn_choice_def"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="4dp"
-        android:text="DEF"
+        android:text=""
+        android:background="@drawable/button_def"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/card_player" />
 
@@ -60,9 +62,11 @@
 
     <Button
         android:id="@+id/btn_choice_mag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MAG"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:text=""
+        android:background="@drawable/button_mag"
         app:layout_constraintEnd_toEndOf="@+id/btn_choice_def"
         app:layout_constraintStart_toStartOf="@+id/btn_choice_attack"
         app:layout_constraintTop_toBottomOf="@+id/btn_choice_attack" />
