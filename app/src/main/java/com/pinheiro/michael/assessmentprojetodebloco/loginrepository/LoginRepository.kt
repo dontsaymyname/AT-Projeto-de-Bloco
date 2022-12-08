@@ -32,7 +32,10 @@ class LoginRepository private constructor() {
             firestore = Firebase.firestore
             usersCollection = firestore.collection("users")
 
-            setUserDocument()
+            if(auth.currentUser != null){
+                setUserDocument()
+            }
+
 
         }
 
@@ -95,7 +98,13 @@ class LoginRepository private constructor() {
 
     fun getUserModel() = userModel
 
-
+    fun addNewCard(){
+        val newCardsList = userModel.cardsIds.toMutableList()
+        newCardsList.add(1)
+        usersCollection.document(userModel.id).set(
+            userModel.copy(cardsIds = newCardsList)
+        )
+    }
 
     fun logout() {
         auth.signOut()
