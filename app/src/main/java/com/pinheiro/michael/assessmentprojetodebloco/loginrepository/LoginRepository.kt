@@ -65,7 +65,9 @@ class LoginRepository private constructor() {
         return false
 
     }
-
+    fun updateUserModel(newUserModel: UserModel){
+        userModel = newUserModel
+    }
     fun cadastrarUsuarioComSenha(email: String, password: String): Task<AuthResult> {
         return auth.createUserWithEmailAndPassword(email, password)
     }

@@ -38,72 +38,11 @@ class InGameActivity : AppCompatActivity() {
         var cards = emptyList<Int>()
 
         playerCards = viewModel.retrieveDeck().findCards()
-
-        enemyCards = listOf(
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 4000,
-                def = 5500,
-                magic = 2500,
-                rarity = Rarity.RARE
-            ),
-            CardModel(
-                id = 1,
-                name = "Grungkin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 2000,
-                def = 1000,
-                magic = 3500,
-                rarity = Rarity.NORMAL
-            ),
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 6000,
-                def = 3500,
-                magic = 2500,
-                rarity = Rarity.LEGENDARY
-            ),
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 5000,
-                def = 4500,
-                magic = 1500,
-                rarity = Rarity.RARE
-            ),
-            CardModel(
-                id = 1,
-                name = "Grungkin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 3000,
-                def = 2000,
-                magic = 1500,
-                rarity = Rarity.NORMAL
-            ),
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 5000,
-                def = 4500,
-                magic = 1500,
-                rarity = Rarity.LEGENDARY
-            ),
-            CardModel(
-                id = 0,
-                name = "Arkilon, o goblin",
-                sprite = "https://cdn.midjourney.com/cd533c59-6bdd-44b4-b86f-56e5367753e9/grid_0.png",
-                atk = 5000,
-                def = 4500,
-                magic = 1500,
-                rarity = Rarity.LEGENDARY
-            )
-        )
+        val enemyList = mutableSetOf<Int>()
+        while (enemyList.size < 7) {
+            enemyList.add((1..AllCards.cardsList.size).random())
+        }
+        enemyCards = enemyList.toList().findCards()
 
         binding.btnContinue.setOnClickListener { controlGame() }
         binding.layoutResult.btnIngameResultBack.setOnClickListener { finish() }
