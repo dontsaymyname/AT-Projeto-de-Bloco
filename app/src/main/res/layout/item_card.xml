@@ -8,7 +8,6 @@
     android:layout_margin="4dp"
     android:background="@drawable/card_normal">
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_name"
         android:layout_width="wrap_content"
@@ -119,6 +118,18 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline_chapeu"
         app:layout_constraintStart_toStartOf="@+id/guideline_margin_text" />
+
+    <LinearLayout
+        android:id="@+id/container_mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cian_dark"
+        android:alpha="0"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

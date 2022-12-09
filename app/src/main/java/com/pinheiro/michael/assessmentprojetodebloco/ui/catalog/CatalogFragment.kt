@@ -23,9 +23,13 @@ class CatalogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCatalogBinding.inflate(inflater, container, false)
-        adapter = CatalogAdapter(object : CardListener{
-            override fun clickVisualizar(card: CardModel) {
-                Toast.makeText(requireContext(), "Click do item OK ${card.name}", Toast.LENGTH_SHORT).show()
+        adapter = CatalogAdapter(object : CardListener {
+            override fun clickVisualizar(card: CardModel, view: View) {
+                Toast.makeText(
+                    requireContext(),
+                    "Click do item OK ${card.name}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
