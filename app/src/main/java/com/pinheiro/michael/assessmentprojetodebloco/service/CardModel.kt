@@ -605,7 +605,7 @@ object AllCards {
             atk= 8700,
             def = 3300,
             magic = 100,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
         CardModel(
             id = 64,
@@ -614,7 +614,7 @@ object AllCards {
             atk= 8700,
             def = 3300,
             magic = 100,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
         CardModel(
             id = 65,
@@ -623,7 +623,7 @@ object AllCards {
             atk= 8700,
             def = 3300,
             magic = 100,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
         CardModel(
             id = 66,
@@ -632,7 +632,7 @@ object AllCards {
             atk= 8700,
             def = 3300,
             magic = 100,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
         CardModel(
             id = 67,
@@ -641,7 +641,7 @@ object AllCards {
             atk= 9000,
             def = 8000,
             magic = 7000,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
         CardModel(
             id = 68,
@@ -650,7 +650,7 @@ object AllCards {
             atk= 8700,
             def = 8300,
             magic = 500,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
         CardModel(
             id = 69,
@@ -659,7 +659,7 @@ object AllCards {
             atk= 8700,
             def = 6300,
             magic = 100,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
         CardModel(
             id = 70,
@@ -668,7 +668,7 @@ object AllCards {
             atk= 8900,
             def = 8300,
             magic = 100,
-            rarity = Rarity.NORMAL
+            rarity = Rarity.RARE
         ),
 
     )
