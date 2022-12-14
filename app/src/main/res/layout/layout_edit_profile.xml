@@ -16,7 +16,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginTop="64dp"
-            android:background="@color/blue_light"
+            android:background="@color/gray"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_edit"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,32 +24,33 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/styleCornersImage" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_edit_name"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/input_name"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_margin="32dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/input_bg_black"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/gray"
+            android:ems="10"
+            android:hint="@string/apelido"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="13dp"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_image"
-            app:shapeAppearanceOverlay="@style/Button">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/black"
-                android:hint="Apelido"
-                android:textSize="13sp"
-                android:textStyle="normal" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
         <Button
             android:id="@+id/btn_confirmar"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Confirmar"
             android:layout_marginBottom="16dp"
+            android:text="@string/confirmar"
             app:layout_constraintBottom_toTopOf="@+id/btn_cancelar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -58,8 +59,8 @@
             android:id="@+id/btn_cancelar"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Cancelar"
             android:layout_marginBottom="32dp"
+            android:text="@string/cancelar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

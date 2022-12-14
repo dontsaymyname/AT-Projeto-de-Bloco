@@ -4,11 +4,13 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.LayoutInflater
@@ -24,6 +26,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.decode.ImageSource
+import coil.load
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.pinheiro.michael.assessmentprojetodebloco.R
 import com.pinheiro.michael.assessmentprojetodebloco.databinding.FragmentProfileBinding
@@ -58,7 +61,7 @@ class ProfileFragment : Fragment() {
             if (permissao) {
                 resultGaleria.launch(
                     Intent(
-                        Intent.ACTION_PICK,
+                        Intent.ACTION_OPEN_DOCUMENT,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                     )
                 )
@@ -137,7 +140,7 @@ class ProfileFragment : Fragment() {
             permissaoGaleriaAceita -> {
                 resultGaleria.launch(
                     Intent(
-                        Intent.ACTION_PICK,
+                        Intent.ACTION_OPEN_DOCUMENT,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI
                     )
                 )
@@ -240,7 +243,9 @@ class ProfileFragment : Fragment() {
         if (user != null) {
             binding.tvEmail.text = viewModel.retrieveUserInfo().email
             binding.tvName.text = user.displayName
-            binding.profileImage.setImageURI(user.photoUrl)
+            if (user.photoUrl != null) {
+                binding.profileImage.load(uriToPath(requireContext(), user.photoUrl))
+            }
         }
     }
 
@@ -282,6 +287,26 @@ class ProfileFragment : Fragment() {
     fun atualizaRecyclerView(lista: List<CardModel>, recyclerView: RecyclerView) {
         adapter.submitList(lista)
         recyclerView.adapter = adapter
+    }
+
+    fun uriToPath(context: Context, uri: Uri?): String? {
+        var filePath = ""
+        val wholeID = DocumentsContract.getDocumentId(uri)
+
+        val id = wholeID.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
+        val column = arrayOf(MediaStore.Images.Media.DATA)
+
+        val sel = MediaStore.Images.Media._ID + "=?"
+        val cursor: Cursor = context.contentResolver.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            column, sel, arrayOf(id), null
+        )!!
+        val columnIndex: Int = cursor.getColumnIndex(column[0])
+        if (cursor.moveToFirst()) {
+            filePath = cursor.getString(columnIndex)
+        }
+        cursor.close()
+        return filePath
     }
 
     override fun onDestroyView() {
