@@ -32,7 +32,15 @@ class RegisterActivity : AppCompatActivity() {
             btnRegister.setOnClickListener {
                 onSignOnClick()
             }
+
+            signUp.setOnClickListener {
+                signOnActivity()
+            }
         }
+    }
+
+    private fun signOnActivity() {
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 
     private fun onSignOnClick() {
@@ -59,5 +67,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 }

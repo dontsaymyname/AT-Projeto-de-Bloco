@@ -10,12 +10,19 @@ class LoginViewModel: ViewModel() {
     val TAG = "ViewModel"
     val repository = LoginRepository.get()
     // auth
+
     fun  isLoggedIn(): Boolean {
         return repository.isLoggedIn()
     }
+
     fun login(email: String, password:String): Task<AuthResult> {
-        return LoginRepository.auth.signInWithEmailAndPassword(email,password)
+        return repository.login(email, password)
     }
+
+    fun loginSuccess() {
+        repository.updateUserDocument()
+    }
+
     fun signOn(email:String,password:String): Task<AuthResult> {
         return repository.cadastrarUsuarioComSenha(
             email,
@@ -24,6 +31,4 @@ class LoginViewModel: ViewModel() {
             repository.createUser(it.user!!.uid, it.user!!.email!!)
         }
     }
-
-
 }
