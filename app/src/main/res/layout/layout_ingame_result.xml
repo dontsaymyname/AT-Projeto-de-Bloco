@@ -41,8 +41,9 @@
         android:layout_marginTop="24dp"
         tools:text="Globlin  x  Beedril"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_ingame_result_text" />

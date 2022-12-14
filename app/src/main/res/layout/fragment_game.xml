@@ -4,7 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/background"
     tools:context=".ui.game.GameFragment">
+
+    <TextView
+        android:id="@+id/tv_game_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Como funciona:"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:textColor="@color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        android:text="A cada round um jogador seleciona um atributo (ataque, defesa ou magia).\n\nEles serão comparados e vence o round o de maoir valor.\n\nA ordem é intercalada e o primeiro a escolher é definido aleatoriamente.\n\nAo final dos 7 rounds vence o que tiver pontuado mais."
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_game_title" />
 
 
     <Button
@@ -12,20 +39,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jogar"
-        app:layout_constraintBottom_toTopOf="@+id/btn_help"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <Button
-        android:id="@+id/btn_help"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ajuda"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_play" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
