@@ -36,13 +36,11 @@ class LoginRepository private constructor() {
             if (auth.currentUser != null) {
                 setUserDocument()
             }
-
         }
 
         fun get(): LoginRepository {
             return INSTANCE
                 ?: throw IllegalStateException(" TurmasRepository deve ser inicializado")
-
         }
 
         private fun setUserDocument() {
@@ -57,7 +55,6 @@ class LoginRepository private constructor() {
 
     }
 
-
     fun getCurrentUser() = auth.currentUser
 
     fun isLoggedIn(): Boolean {
@@ -65,10 +62,9 @@ class LoginRepository private constructor() {
             return true
         }
         return false
-
     }
 
-    fun updateUserModel(newUserModel: UserModel) {
+    fun updateUserModel(newUserModel: UserModel){
         userModel = newUserModel
     }
 
@@ -79,8 +75,10 @@ class LoginRepository private constructor() {
     fun login(email: String, password: String): Task<AuthResult> {
         //logar com firebase
         return auth.signInWithEmailAndPassword(email, password)
-//
+    }
 
+    fun updateUserDocument() {
+        setUserDocument()
     }
 
     fun createUser(userId: String, email: String) {
@@ -96,6 +94,7 @@ class LoginRepository private constructor() {
                 deck = firstDeck.toList().dropLast(5)
             )
         )
+        setUserDocument()
     }
 
     fun getUsersCollection() = usersCollection
@@ -128,6 +127,5 @@ class LoginRepository private constructor() {
 
     fun logout() {
         auth.signOut()
-
     }
 }
