@@ -28,10 +28,6 @@ class GameFragment : Fragment() {
         binding.btnPlay.setOnClickListener {
             startActivity(Intent(activity, InGameActivity::class.java))
         }
-        binding.btnHelp.setOnClickListener {
-            repository.logout()
-        }
-
 
         return binding.root
     }

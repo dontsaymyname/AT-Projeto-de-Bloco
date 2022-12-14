@@ -1,5 +1,9 @@
 package com.pinheiro.michael.assessmentprojetodebloco.service
 
+import coil.load
+import com.pinheiro.michael.assessmentprojetodebloco.R
+import com.pinheiro.michael.assessmentprojetodebloco.databinding.ItemCardBinding
+
 data class CardModel(
     val id: Int,
     val name: String,
@@ -22,6 +26,21 @@ fun List<Int>.findCards(): List<CardModel>{
         deck.add(AllCards.cardsList[id])
     }
     return deck
+}
+
+fun Int.toCard() = AllCards.cardsList[this]
+
+fun ItemCardBinding.populateCard(cardModel: CardModel) {
+    this.tvName.text = cardModel.name
+    this.tvAttack.text = cardModel.atk.toString()
+    this.tvDef.text = cardModel.def.toString()
+    this.tvMagic.text = cardModel.magic.toString()
+    this.imgSprite.load(cardModel.sprite)
+    this.containerCard.setBackgroundResource(when(cardModel.rarity){
+        Rarity.NORMAL -> R.drawable.card_normal
+        Rarity.RARE -> R.drawable.card_rare
+        Rarity.LEGENDARY -> R.drawable.card_legendary
+    })
 }
 
 // Arquivo provisório para salvar as cartas

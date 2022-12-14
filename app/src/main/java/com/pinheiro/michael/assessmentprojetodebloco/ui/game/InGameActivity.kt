@@ -161,20 +161,6 @@ class InGameActivity : AppCompatActivity() {
         }
     }
 
-    private fun ItemCardBinding.populateCard(cardModel: CardModel) {
-        this.tvName.text = cardModel.name
-        this.tvAttack.text = cardModel.atk.toString()
-        this.tvDef.text = cardModel.def.toString()
-        this.tvMagic.text = cardModel.magic.toString()
-        this.imgSprite.load(cardModel.sprite)
-        this.containerCard.setBackgroundResource(when(cardModel.rarity){
-            Rarity.NORMAL -> R.drawable.card_normal
-            Rarity.RARE -> R.drawable.card_rare
-            Rarity.LEGENDARY -> R.drawable.card_legendary
-        })
-    }
-
-
     private fun setFight(attribute: CardAttributes, playerCard: CardModel, enemyCard: CardModel) {
        val result = when(attribute){
             CardAttributes.ATK -> calculateResult(playerCard.atk, enemyCard.atk)

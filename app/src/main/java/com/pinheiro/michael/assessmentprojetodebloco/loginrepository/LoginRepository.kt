@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.pinheiro.michael.assessmentprojetodebloco.service.UserModel
+import com.pinheiro.michael.assessmentprojetodebloco.service.*
 
 
 const val TAG = "LoginSTF"
@@ -21,6 +21,7 @@ class LoginRepository private constructor() {
         lateinit var firestore: FirebaseFirestore
         lateinit var usersCollection: CollectionReference
         var userModel = UserModel()
+        var newCard = 0
 
 
         private var INSTANCE: LoginRepository? = null
@@ -46,11 +47,12 @@ class LoginRepository private constructor() {
             val id = auth.currentUser!!.uid
             val user = usersCollection.document(id)
             user.get().addOnCompleteListener {
-                if(it.isSuccessful){
+                if (it.isSuccessful) {
                     userModel = it.result.toObject<UserModel>()!!
                 }
             }
         }
+
     }
 
     fun getCurrentUser() = auth.currentUser
@@ -82,7 +84,7 @@ class LoginRepository private constructor() {
     fun createUser(userId: String, email: String) {
         val firstDeck = mutableSetOf<Int>()
         while (firstDeck.size < 12) {
-            firstDeck.add((1..20).random())
+            firstDeck.add((1..AllCards.cardsList.size).random())
         }
         usersCollection.document(userId).set(
             UserModel(
@@ -98,6 +100,30 @@ class LoginRepository private constructor() {
     fun getUsersCollection() = usersCollection
 
     fun getUserModel() = userModel
+
+    fun getNewCard() = newCard
+
+    fun clearNewCard(){
+        newCard = 0
+    }
+
+    fun addNewCard() {
+        val newCardsList = userModel.cardsIds.toMutableList()
+        val randomCardId = generateCard()
+
+        if (userModel.cardsIds.contains(randomCardId).not()) {
+            newCardsList.add(randomCardId)
+            usersCollection.document(userModel.id).set(
+                userModel.copy(cardsIds = newCardsList)
+            )
+            newCard = randomCardId
+            return
+        } else {
+            addNewCard()
+        }
+    }
+
+    fun generateCard() = (1..AllCards.cardsList.size).random()
 
     fun logout() {
         auth.signOut()
