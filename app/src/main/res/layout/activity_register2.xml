@@ -120,11 +120,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword" />
 
             <TextView
-                android:id="@+id/Signup"
+                android:id="@+id/sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Ja Possui uma Conta?"
+                android:text="Já Possui uma Conta?"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/btnRegister"

@@ -34,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun startMainActivity() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
     private fun setup() {
         setupOnClickListeners()
@@ -44,13 +45,14 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.setOnClickListener {
                 onSignInClick()
             }
+
             Signup.setOnClickListener{
-                onSignOnClick()
+                signUpActivity()
             }
         }
     }
 
-    private fun onSignOnClick() {
+    private fun signUpActivity() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }
 
@@ -63,6 +65,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.login(email,password)
             .addOnSuccessListener {
                 toastMsg("logado com sucesso")
+                viewModel.loginSuccess()
                 startMainActivity()
             }
             .addOnFailureListener{
