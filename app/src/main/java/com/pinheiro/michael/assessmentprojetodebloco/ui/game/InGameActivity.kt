@@ -56,7 +56,10 @@ class InGameActivity : AppCompatActivity() {
             with(binding.layoutFight){
                 tvPlayerAttribute.isVisible = false
                 tvEnemyAttribute.isVisible = false
-                tvEscolhaAtributo.text = when(currentMatchResult){
+                ivFight.isVisible = false
+                tvEscolhaAtributo.isVisible = false
+                tvRoundResult.isVisible = true
+                tvRoundResult.text = when(currentMatchResult){
                     MatchResults.WIN -> "Round Vencido"
                     MatchResults.DEFEAT -> "Round Perdido"
                     MatchResults.DRAW -> "Round Empatado"
@@ -125,6 +128,9 @@ class InGameActivity : AppCompatActivity() {
             CardAttributes.DEF -> "DEF"
             CardAttributes.MAGIC -> "MAGIC"
         }
+        binding.layoutFight.ivFight.isVisible = true
+        binding.layoutFight.tvEscolhaAtributo.isVisible = true
+        binding.layoutFight.tvRoundResult.isVisible = false
         binding.layoutFight.tvEscolhaAtributo.text = "Oponente escolheu $atttributeText"
         setFight(enemyAttribute, playerCard, enemyCard)
     }
@@ -149,6 +155,9 @@ class InGameActivity : AppCompatActivity() {
     }
 
     private fun setPlayerChoice(playerCard: CardModel, enemyCard: CardModel) {
+        binding.layoutFight.tvRoundResult.isVisible = false
+        binding.layoutFight.tvEscolhaAtributo.isVisible = true
+        binding.layoutFight.ivFight.isVisible = true
         with(binding.layoutAttributeChoice) {
             root.isVisible = true
             cardPlayer.populateCard(playerCard)

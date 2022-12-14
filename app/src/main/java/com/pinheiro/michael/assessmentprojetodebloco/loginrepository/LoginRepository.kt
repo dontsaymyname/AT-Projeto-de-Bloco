@@ -84,7 +84,7 @@ class LoginRepository private constructor() {
     fun createUser(userId: String, email: String) {
         val firstDeck = mutableSetOf<Int>()
         while (firstDeck.size < 12) {
-            firstDeck.add((1..AllCards.cardsList.size).random())
+            firstDeck.add((1 until AllCards.cardsList.size).random())
         }
         usersCollection.document(userId).set(
             UserModel(
@@ -116,6 +116,7 @@ class LoginRepository private constructor() {
             usersCollection.document(userModel.id).set(
                 userModel.copy(cardsIds = newCardsList)
             )
+            updateUserModel(userModel.copy(cardsIds = newCardsList))
             newCard = randomCardId
             return
         } else {

@@ -251,6 +251,8 @@ class ProfileFragment : Fragment() {
 
     private fun openEditor() {
 
+        viewModel.updateCards()
+
         with(binding.cardDeckEditr) {
             recyclerDeckEditor.layoutManager = GridLayoutManager(
                 requireContext(),
@@ -265,10 +267,14 @@ class ProfileFragment : Fragment() {
             }
             btnCancelar.setOnClickListener {
                 root.isVisible = false
+                atualizaRecyclerView(
+                    viewModel.retrieveDeck(),
+                    binding.recyclerDeck
+                )
             }
 
             atualizaRecyclerView(
-                viewModel.retrieveUserInfo().cardsIds.findCards(),
+                viewModel.cards.value!!,
                 recyclerDeckEditor
             )
         }
